@@ -22,13 +22,13 @@ import work.wanghao.imagetag.R;
   private static final int CLICK_RANGE = 5;
 
   /*TagView的默认宽高，如需精确适配，请在更新View_tag布局之后，通过getWidth()和getHeight()手动获取一次*/
-  public static final int DEFAULT_WIDTH = 223;
-  public static final int DEFAULT_HEIGHT = 174;
+  public static final int DEFAULT_WIDTH = /*223*/85;
+  public static final int DEFAULT_HEIGHT = /*174*/66;
 
-  public static final int DEFAULT_ARROW_HEIGHT = 42;
-  public static final int DEFAULT_ARROW_WIDTH = 95;
+  public static final int DEFAULT_ARROW_HEIGHT = /*42*/16;
+  public static final int DEFAULT_ARROW_WIDTH = /*95*/36;
 
-  public static final int DEFAULT_EMPTY_WIDTH = 136;
+  public static final int DEFAULT_EMPTY_WIDTH = /*136*/52;
 
   public enum Direction {TOP, BOTTOM}
 

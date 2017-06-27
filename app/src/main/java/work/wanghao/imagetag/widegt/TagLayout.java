@@ -122,31 +122,31 @@ import static work.wanghao.imagetag.widegt.PxUtils.sp2px;
 
 
     /*对Y坐标进行有效范围默认校正*/
-    if (y + TagView.DEFAULT_HEIGHT / 2 > getHeight()) {
-      y = getHeight() - TagView.DEFAULT_HEIGHT / 2;
-    } else if (y < TagView.DEFAULT_HEIGHT / 2) {
-      y = TagView.DEFAULT_HEIGHT / 2;
+    if (y + PxUtils.dp2px(mContext, TagView.DEFAULT_HEIGHT) / 2 > getHeight()) {
+      y = getHeight() - PxUtils.dp2px(mContext, TagView.DEFAULT_HEIGHT) / 2;
+    } else if (y < PxUtils.dp2px(mContext, TagView.DEFAULT_HEIGHT) / 2) {
+      y = PxUtils.dp2px(mContext, TagView.DEFAULT_HEIGHT) / 2;
     }
       /*对X坐标进行有效范围矫正*/
-    if (x + TagView.DEFAULT_WIDTH / 2 >= getWidth()) {
+    if (x + PxUtils.dp2px(mContext, TagView.DEFAULT_WIDTH) / 2 >= getWidth()) {
       /*对于右边屏幕的宽度而言，这种程度的校正并没有什么卵用，还需要后续动态校正，当然也可以在此处计算字体宽度*/
-      x = getWidth() - TagView.DEFAULT_WIDTH / 2;
-    } else if (x < TagView.DEFAULT_WIDTH / 2) {
-      x = TagView.DEFAULT_WIDTH / 2;
+      x = getWidth() - PxUtils.dp2px(mContext, TagView.DEFAULT_WIDTH) / 2;
+    } else if (x < PxUtils.dp2px(mContext, TagView.DEFAULT_WIDTH) / 2) {
+      x = PxUtils.dp2px(mContext, TagView.DEFAULT_WIDTH) / 2;
     }
 
     View view;
     LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
     if (y < getHeight() * 0.8) {
-      params.topMargin = y - TagView.DEFAULT_HEIGHT / 2;
+      params.topMargin = y - PxUtils.dp2px(mContext, TagView.DEFAULT_HEIGHT) / 2;
       view = new TagView(getContext(), TagView.Direction.TOP, this);
     } else {
-      params.topMargin = y - TagView.DEFAULT_HEIGHT / 2;
+      params.topMargin = y - PxUtils.dp2px(mContext, TagView.DEFAULT_HEIGHT) / 2;
       view = new TagView(getContext(), TagView.Direction.BOTTOM, this);
     }
 
-    params.leftMargin = x - TagView.DEFAULT_WIDTH / 2;
+    params.leftMargin = x - PxUtils.dp2px(mContext, TagView.DEFAULT_WIDTH) / 2;
 
     /*其中leftMargin和topMargin分别为当前x，y的坐标点减去TagView的默认宽高的一半得到的数值*/
     addView(view, params);
@@ -167,10 +167,10 @@ import static work.wanghao.imagetag.widegt.PxUtils.sp2px;
     //改变箭头朝向
     if (mCurrentTouchChildTagView instanceof TagView) {
       if (y < getHeight() * 0.8) {
-        params.topMargin = y - TagView.DEFAULT_HEIGHT / 2;
+        params.topMargin = y - PxUtils.dp2px(mContext, TagView.DEFAULT_HEIGHT) / 2;
         mCurrentTouchChildTagView.changeDirection(TagView.Direction.TOP);
       } else {
-        params.topMargin = y - TagView.DEFAULT_HEIGHT / 2;
+        params.topMargin = y - PxUtils.dp2px(mContext, TagView.DEFAULT_HEIGHT) / 2;
         mCurrentTouchChildTagView.changeDirection(TagView.Direction.BOTTOM);
       }
     }
@@ -269,12 +269,15 @@ import static work.wanghao.imagetag.widegt.PxUtils.sp2px;
   private void addTagView(TagLocationData data) {
     View view;
     LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-    double y = data.getLocationY(getHeight()) + TagView.DEFAULT_ARROW_HEIGHT;
+    double y =
+        data.getLocationY(getHeight()) + PxUtils.dp2px(mContext, TagView.DEFAULT_ARROW_HEIGHT);
     if (y < getHeight() * 0.8) {
-      params.topMargin = (int) (y + TagView.DEFAULT_ARROW_HEIGHT - TagView.DEFAULT_HEIGHT / 2);
+      params.topMargin = (int) (y + PxUtils.dp2px(mContext, TagView.DEFAULT_ARROW_HEIGHT)
+          - PxUtils.dp2px(mContext, TagView.DEFAULT_HEIGHT) / 2);
       view = new TagView(getContext(), TagView.Direction.TOP, this);
     } else {
-      params.topMargin = (int) (y + TagView.DEFAULT_ARROW_HEIGHT - TagView.DEFAULT_HEIGHT / 2);
+      params.topMargin = (int) (y + PxUtils.dp2px(mContext, TagView.DEFAULT_ARROW_HEIGHT)
+          - PxUtils.dp2px(mContext, TagView.DEFAULT_HEIGHT) / 2);
       view = new TagView(getContext(), TagView.Direction.BOTTOM, this);
     }
 
@@ -286,21 +289,21 @@ import static work.wanghao.imagetag.widegt.PxUtils.sp2px;
 
 
      /*对X坐标进行有效范围矫正*/
-    if (x < TagView.DEFAULT_WIDTH / 2) {
-      x = TagView.DEFAULT_WIDTH / 2;
+    if (x < PxUtils.dp2px(mContext, TagView.DEFAULT_WIDTH) / 2) {
+      x = PxUtils.dp2px(mContext, TagView.DEFAULT_WIDTH) / 2;
     }
 
-    params.leftMargin = (int) (x - TagView.DEFAULT_WIDTH / 2);
+    params.leftMargin = (int) (x - PxUtils.dp2px(mContext, TagView.DEFAULT_WIDTH) / 2);
 
-    if (x + TagView.DEFAULT_WIDTH / 2 >= getWidth()) {
+    if (x + PxUtils.dp2px(mContext, TagView.DEFAULT_WIDTH) / 2 >= getWidth()) {
       TextPaint textPaint = new TextPaint();
       textPaint.setTextSize(sp2px(mContext, 11));//设置字体大小
-      float width =
-          Layout.getDesiredWidth(data.getTagText(), textPaint) + TagView.DEFAULT_EMPTY_WIDTH / 2;
+      float width = Layout.getDesiredWidth(data.getTagText(), textPaint)
+          + PxUtils.dp2px(mContext, TagView.DEFAULT_EMPTY_WIDTH) / 2;
       x = (int) (getWidth() - width / 2);
       params.leftMargin = (int) (x - width / 2);
     } else {
-      params.leftMargin = (int) (x - TagView.DEFAULT_WIDTH / 2);
+      params.leftMargin = (int) (x - PxUtils.dp2px(mContext, TagView.DEFAULT_WIDTH) / 2);
     }
 
 
