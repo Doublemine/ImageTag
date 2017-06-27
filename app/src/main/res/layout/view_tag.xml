@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+
+  <ImageView
+      android:id="@+id/arrow_top"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="top"
+      android:background="@drawable/tag_carrot_top"
+      android:scaleType="centerInside"
+      tools:layout_gravity="top"
+      />
+
+  <TextView
+      android:id="@+id/tv_tagging"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="7.2dp"
+      android:layout_marginTop="7.2dp"
+      android:background="@drawable/tag_bubble"
+      android:gravity="center"
+      android:maxLines="1"
+      android:singleLine="true"
+      android:ellipsize="none"
+      android:text="Who's this ?"
+      android:textColor="@android:color/white"
+      android:textColorHint="@android:color/white"
+      android:textSize="11sp"
+      android:textStyle="bold"
+      tools:ignore="Deprecated"
+      />
+
+  <ImageView
+      android:id="@+id/close"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="end"
+      android:scaleType="centerInside"
+      android:src="@drawable/tag_close"
+      android:visibility="gone"
+      tools:visibility="visible"
+      />
+
+
+  <ImageView
+      android:id="@+id/arrow_bottom"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="bottom"
+      android:background="@drawable/tag_carrot_bottom"
+      android:scaleType="centerInside"
+      tools:visibility="visible"
+      />
+
+</FrameLayout>
